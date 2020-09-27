@@ -5,29 +5,23 @@ import java.util.Random;
 public class App {
 
 	public static void main(String[] args) {
-	
-		generateRandomArray();
+
+		int[] firstArray = generateRandomArray();
+		int[] secondArray = generateRandomArray();
 		
-		
-		//findMedianSortedArrays(int[] nums1, int[] nums2);
+		findMedianSortedArrays(firstArray,secondArray);
 	}
 
-	public static void generateRandomArray() {
+	public static int[] generateRandomArray() {
+		Random rand;
+		int randomArraySize = rand.nextInt((99999999 - 0) + 1) + 0;
+		int[] randomArray = new int[randomArraySize];
 
-		int[] randomArray = {} ;
-		int[] myIntArray = new int[3];
-	    int randomNum = rand.nextInt((9 - 0) + 1) + 0;
+		for(int i = 0; i < randomArraySize; i++) {
+			randomArray[i] = rand.nextInt((9 - 0) + 1) + 0;
+		}
 
-		
-		
-		
-		  Random rand;
-
-		    // nextInt is normally exclusive of the top value,
-		    // so add 1 to make it inclusive
-		    int randomNum = rand.nextInt((9 - 0) + 1) + 0;
-
-		    return randomNum;
+		return randomArray;
 	}
 
 	public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
