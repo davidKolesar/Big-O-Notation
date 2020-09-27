@@ -8,26 +8,32 @@ public class App {
 
 		int[] firstArray = generateRandomArray();
 		int[] secondArray = generateRandomArray();
-		
-		findMedianSortedArrays(firstArray,secondArray);
+
+		findMedianSortedArrays(firstArray, secondArray);
 	}
 
 	public static int[] generateRandomArray() {
 		Random rand;
+
 		int randomArraySize = rand.nextInt((99999999 - 0) + 1) + 0;
 		int[] randomArray = new int[randomArraySize];
 
-		for(int i = 0; i < randomArraySize; i++) {
+		for (int i = 0; i < randomArraySize; i++) {
 			randomArray[i] = rand.nextInt((9 - 0) + 1) + 0;
 		}
 
 		return randomArray;
 	}
 
+	/**
+	 * Given two sorted arrays nums1 and nums2 of size m and n respectively, return
+	 * the median of the two sorted arrays.
+	 * 
+	 * @param nums1
+	 * @param nums2
+	 * @return
+	 */
 	public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
-
-		// edge cases
-
 		// both are null
 		if (nums1 == null && nums2 == null) {
 			System.out.println("Both arrays were null.");
