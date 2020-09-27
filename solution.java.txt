@@ -40,20 +40,22 @@ public class App {
 			return 0;
 		}
 
-		// One is null
+		// First array is null
 		if (nums1 == null && nums2 != null) {
 			if (nums2.length > 1) {
 				System.out.println("First array is null, second array has more than one element.");
+				//return median of second array
 				return (nums2[0] - nums2[nums2.length - 1]) / 2;
 			}
 			System.out.println("First array is null, second array has one element.");
 			return nums2[0];
 		}
 
-		// Two is null
+		// Second array is null
 		if (nums2 == null && nums1 != null) {
 			if (nums1.length > 1) {
 				System.out.println("Second array is null, first array has more than one element.");
+				//return median of second array
 				return (nums1[0] - nums1[nums1.length - 1]) / 2;
 			}
 			System.out.println("Second array is null, first array has one element.");
@@ -71,44 +73,3 @@ public class App {
 	}
 }
 
-class Solution {
-	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-
-		// edge cases
-
-		// both are null
-		if (nums1 == null && nums2 == null) {
-			System.out.println("Both arrays were null.");
-			return 0;
-		}
-
-		// One is null
-		if (nums1 == null && nums2 != null) {
-			if (nums2.length > 1) {
-				System.out.println("First array is null, second array has more than one element.");
-				return (nums2[0] - nums2[nums2.length - 1]) / 2;
-			}
-			System.out.println("First array is null, second array has one element.");
-			return nums2[0];
-		}
-
-		// Two is null
-		if (nums2 == null && nums1 != null) {
-			if (nums1.length > 1) {
-				System.out.println("Second array is null, first array has more than one element.");
-				return (nums1[0] - nums1[nums1.length - 1]) / 2;
-			}
-			System.out.println("Second array is null, first array has one element.");
-			return nums1[0];
-		}
-
-		// discard first half of first array
-		int middleNumberOfFirstArray = (nums1.length / 2);
-
-		System.arraycopy(source_arr, sourcePos, dest_arr, destPos, len);
-
-		// discard second half of second array
-		int middleNumberOfFirstArray = (nums1.length / 2);
-
-	}
-}
