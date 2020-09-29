@@ -1,5 +1,6 @@
 package com.mycompany.app;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class App {
@@ -73,14 +74,17 @@ public class App {
 
 		int[] combinedArrays = {(firstArrayToDivide.length / 2) + (secondArrayToDivide.length / 2) };
 		
-		// discard first half of first array
+		// copy first half of first array
 		int middleNumberOfFirstArray = (firstArrayToDivide.length / 2);
+		int[] copy1 = Arrays.copyOfRange(firstArrayToDivide, 0, middleNumberOfFirstArray);
 
-		// discard second half of second array
-		int middleNumberOfSecondArray = (secondArrayToDivide.length / 2);
+		// copy second half of second array
+		int middleNumberOfSecondArray = (secondArrayToDivide.length / 2);		
+		int[] copy2 = Arrays.copyOfRange(secondArrayToDivide, middleNumberOfSecondArray, secondArrayToDivide.length);
+
 		
 		
-		System.arraycopy(firstArrayToDivide, middleNumberOfFirstArray, combinedArrays, destPos, len);
+		//System.arraycopy(firstArrayToDivide, middleNumberOfFirstArray, combinedArrays, destPos, len);
 		
 	}
 
