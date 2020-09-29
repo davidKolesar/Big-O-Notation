@@ -13,6 +13,7 @@ public class App {
 	}
 
 	/**
+	 * 
 	 * @return
 	 */
 	public static int[] generateRandomArray() {
@@ -64,15 +65,24 @@ public class App {
 			System.out.println("Second array is null, first array has one element.");
 			return nums1[0];
 		}
+		return 0;
+	}
+	
+	
+	public void combineArray(int[] firstArrayToDivide, int[] secondArrayToDivide) {
 
+		int[] combinedArrays = {(firstArrayToDivide.length / 2) + (secondArrayToDivide.length / 2) };
+		
 		// discard first half of first array
-		int middleNumberOfFirstArray = (nums1.length / 2);
-
-		System.arraycopy(source_arr, sourcePos, dest_arr, destPos, len);
+		int middleNumberOfFirstArray = (firstArrayToDivide.length / 2);
 
 		// discard second half of second array
-		int middleNumberOfFirstArray = (nums1.length / 2);
-
+		int middleNumberOfSecondArray = (secondArrayToDivide.length / 2);
+		
+		
+		System.arraycopy(firstArrayToDivide, middleNumberOfFirstArray, combinedArrays, destPos, len);
+		
 	}
+
 }
 
