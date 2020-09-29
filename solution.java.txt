@@ -5,7 +5,6 @@ import java.util.Random;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-
 public class App {
 
 	public static void main(String[] args) {
@@ -52,7 +51,7 @@ public class App {
 		if (nums1 == null && nums2 != null) {
 			if (nums2.length > 1) {
 				System.out.println("First array is null, second array has more than one element.");
-				//return median of second array
+				// return median of second array
 				return (nums2[0] - nums2[nums2.length - 1]) / 2;
 			}
 			System.out.println("First array is null, second array has one element.");
@@ -63,7 +62,7 @@ public class App {
 		if (nums2 == null && nums1 != null) {
 			if (nums1.length > 1) {
 				System.out.println("Second array is null, first array has more than one element.");
-				//return median of second array
+				// return median of second array
 				return (nums1[0] - nums1[nums1.length - 1]) / 2;
 			}
 			System.out.println("Second array is null, first array has one element.");
@@ -71,25 +70,24 @@ public class App {
 		}
 		return 0;
 	}
-	
-	
+
+	/**
+	 * @param firstArrayToDivide
+	 * @param secondArrayToDivide
+	 */
 	public void combineArray(int[] firstArrayToDivide, int[] secondArrayToDivide) {
 
-		int[] combinedArrays = {(firstArrayToDivide.length / 2) + (secondArrayToDivide.length / 2) };
-		
 		// copy first half of first array
 		int middleNumberOfFirstArray = (firstArrayToDivide.length / 2);
 		int[] firstHalf = Arrays.copyOfRange(firstArrayToDivide, 0, middleNumberOfFirstArray);
 
 		// copy second half of second array
-		int middleNumberOfSecondArray = (secondArrayToDivide.length / 2);		
+		int middleNumberOfSecondArray = (secondArrayToDivide.length / 2);
 		int[] secondHalf = Arrays.copyOfRange(secondArrayToDivide, middleNumberOfSecondArray, secondArrayToDivide.length);
 
+		//do we need to combine these? 
 		int[] both = ArrayUtils.addAll(firstHalf, secondHalf);
-		
-		//System.arraycopy(firstArrayToDivide, middleNumberOfFirstArray, combinedArrays, destPos, len);
-		
+
+
 	}
-
 }
-
