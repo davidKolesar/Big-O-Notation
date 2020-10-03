@@ -353,4 +353,19 @@ public class ConsoleIO {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean pressEnterToContinue() {
+		 { 
+		        System.out.println("Press the enter key to continue:");
+		        try
+		        {
+		            System.in.read();
+		            return true;
+		        }  
+		        catch(Exception e)
+		        {
+		        	return false;
+		        }  
+		 }
+	}
 }

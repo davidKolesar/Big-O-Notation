@@ -1,14 +1,12 @@
 package com.mycompany.app;
 
-import java.util.logging.Logger;
-
-import com.mycompany.controller.InitBigO;
+import com.mycompany.controller.BigOController;
 
 public class App {
 
 	public static void main(String[] args) {
-		InitBigO initOptions = new InitBigO();
-		initOptions.init();	
+		BigOController bigOController = new BigOController();
+		bigOController.init();	
 		
 	}
 }
