@@ -1,25 +1,26 @@
-package com.mycompany.app;
+package com.mycompany.binarySearch;
 
 import java.util.Arrays;
 import java.util.Random;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-public class App {
+public class BinarySearch {
 
-	public static void main(String[] args) {
+	public void conductBinarySearch() {
 
 		int[] firstArray = generateRandomArray();
 		int[] secondArray = generateRandomArray();
 
 		findMedianSortedArrays(firstArray, secondArray);
 	}
-
+	
+	
 	/**
 	 * 
 	 * @return
 	 */
-	public static int[] generateRandomArray() {
+	public int[] generateRandomArray() {
 		Random rand = new Random();
 
 		int randomArraySize = rand.nextInt((99999999 - 0) + 1) + 0;
@@ -40,7 +41,7 @@ public class App {
 	 * @param nums2
 	 * @return
 	 */
-	public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 		// both are null
 		if (nums1 == null && nums2 == null) {
 			System.out.println("Both arrays were null.");
@@ -88,6 +89,6 @@ public class App {
 		//do we need to combine these? 
 		int[] both = ArrayUtils.addAll(firstHalf, secondHalf);
 
-
 	}
 }
+
