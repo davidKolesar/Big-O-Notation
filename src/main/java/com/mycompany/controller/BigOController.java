@@ -2,11 +2,13 @@ package com.mycompany.controller;
 
 import com.mycompany.binarySearch.BinarySearch;
 import com.mycompany.consoleIO.ConsoleIO;
+import com.mycompany.constant.Constant;
 
 public class BigOController {
 
 	ConsoleIO consoleIO = new ConsoleIO();
 	BinarySearch binarySearch = new BinarySearch();
+	Constant constant = new Constant();
 	
 	public void init() {
 		boolean isInputValid= false;
@@ -31,7 +33,8 @@ public class BigOController {
 		System.out.println("");
 		System.out.println("");
 		System.out.println("1. Program explanation");
-		System.out.println("2. Big O Binary Search Demonstration -- O(log (m+n))");
+		System.out.println("2. Constant Time Algorithms -- O(1)");
+		System.out.println("3. Logarithmic Time Algorithm [Binary Search Demonstration] -- O(log (m+n))");
 		
 		userSelection = consoleIO.getInt("Please make input a selection: ");
 
@@ -41,12 +44,15 @@ public class BigOController {
 
 	        case 1: 
 	            printProgramExplanation();
-	            break; 
-	        case 2: 
+	            break;
+	        case 2:
+	        	constant.initConstantExample();
+	        	break;
+	        case 3: 
 	        	binarySearch.conductBinarySearch();
 	            break; 
 	        default: 
-	        	programResponse = "You have made an invalid selection. Please input a number and press return"; 
+	        	programResponse = "You have made an invalid selection. Please input a number that corresponds to an option and press return"; 
 	        	break; 
 	        } 
 	        System.out.println(programResponse); 
@@ -55,7 +61,6 @@ public class BigOController {
 	
 	private void printProgramExplanation() {
 		// TODO Auto-generated method stub
-		
 	} 
 	
 }

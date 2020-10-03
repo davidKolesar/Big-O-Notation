@@ -86,6 +86,12 @@ public class BinarySearch {
 		int middleNumberOfSecondArray = (secondArrayToDivide.length / 2);
 		int[] secondHalf = Arrays.copyOfRange(secondArrayToDivide, middleNumberOfSecondArray, secondArrayToDivide.length);
 
+		//Simply put, the algorithm compares the key value with the middle element of the array; 
+		//if they are unequal, 
+		//the half in which the key cannot be part of is eliminated, 
+		//and the search continues for the remaining half until it succeeds.
+		
+		
 		//do we need to combine these? 
 		int[] both = ArrayUtils.addAll(firstHalf, secondHalf);
 
