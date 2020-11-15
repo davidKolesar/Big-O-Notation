@@ -12,7 +12,18 @@ public class BinarySearch {
 		int[] firstArray = generateRandomArray();
 		int[] secondArray = generateRandomArray();
 
-		findMedianSortedArrays(firstArray, secondArray);
+		double median = findMedianSortedArrays(firstArray, secondArray);
+
+		System.out.println("The first Array has  " + firstArray.length + " elements." ); 
+		System.out.println("The first Array is : " + Arrays.toString(firstArray)); 
+		
+		
+		System.out.println();
+		System.out.println("The second Array has  " + secondArray.length + " elements." );
+		System.out.println("The second Array is : " + Arrays.toString(secondArray)); 
+		
+		System.out.println();
+		System.out.println("The median of both arrays is : " + median); 
 	}
 
 	/**
@@ -22,7 +33,7 @@ public class BinarySearch {
 	public int[] generateRandomArray() {
 		Random rand = new Random();
 
-		int randomArraySize = rand.nextInt((99999999 - 0) + 1) + 0;
+		int randomArraySize = rand.nextInt((30 - 0) + 1) + 0;
 		int[] randomArray = new int[randomArraySize];
 
 		for (int i = 0; i < randomArraySize; i++) {
@@ -30,7 +41,7 @@ public class BinarySearch {
 		}
 
         Arrays.sort(randomArray); 
-		return randomArray;
+        return randomArray;
 	}
 
 	/**
