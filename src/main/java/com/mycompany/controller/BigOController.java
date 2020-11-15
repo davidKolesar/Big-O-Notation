@@ -35,6 +35,8 @@ public class BigOController {
 		System.out.println("1. Program explanation");
 		System.out.println("2. Constant Time Algorithms -- O(1)");
 		System.out.println("3. Logarithmic Time Algorithm [Binary Search Demonstration] -- O(log (m+n))");
+		System.out.println("");
+		System.out.println("");
 		
 		userSelection = consoleIO.getInt("Please make input a selection: ");
 
@@ -52,7 +54,9 @@ public class BigOController {
 	        	binarySearch.conductBinarySearch();
 	            break; 
 	        default: 
+	    		System.out.println("");
 	        	programResponse = "You have made an invalid selection. Please input a number that corresponds to an option and press return"; 
+	    		System.out.println("");
 	        	break; 
 	        } 
 	        System.out.println(programResponse); 

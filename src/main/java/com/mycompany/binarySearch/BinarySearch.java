@@ -1,9 +1,9 @@
 package com.mycompany.binarySearch;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Random;
-
-import org.apache.commons.lang3.ArrayUtils;
 
 public class BinarySearch {
 
@@ -14,8 +14,7 @@ public class BinarySearch {
 
 		findMedianSortedArrays(firstArray, secondArray);
 	}
-	
-	
+
 	/**
 	 * 
 	 * @return
@@ -30,6 +29,7 @@ public class BinarySearch {
 			randomArray[i] = rand.nextInt((9 - 0) + 1) + 0;
 		}
 
+        Arrays.sort(randomArray); 
 		return randomArray;
 	}
 
@@ -42,59 +42,123 @@ public class BinarySearch {
 	 * @return
 	 */
 	public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-		// both are null
-		if (nums1 == null && nums2 == null) {
-			System.out.println("Both arrays were null.");
+
+		boolean isFirstArrayEmpty = false;
+		boolean isSecondArrayEmpty = false;
+		boolean isFirstArrayEven = false;
+		boolean isSecondArrayEven = false;
+		int firstArraySize = nums1.length;
+		int secondArraySize = nums2.length;
+		
+		
+		//null check
+		if(nums1 == null && nums2 == null) {
+			System.out.println("Both arrays are null. Returning 0."); 
 			return 0;
 		}
-
-		// First array is null
-		if (nums1 == null && nums2 != null) {
-			if (nums2.length > 1) {
-				System.out.println("First array is null, second array has more than one element.");
-				// return median of second array
-				return (nums2[0] - nums2[nums2.length - 1]) / 2;
-			}
-			System.out.println("First array is null, second array has one element.");
-			return nums2[0];
+        
+        if(nums1 == null) {
+            System.out.println("First array is null."); 
+        }
+        
+        if(nums2 == null) {
+            System.out.println("Second array is null."); 
+        }
+        
+        
+		
+		//check for empty
+		if(nums1 == null || nums1.length == 0 ) {
+			isFirstArrayEmpty = true;
+			System.out.println("First array is empty or null. Finding median of second Array.");
 		}
 
-		// Second array is null
-		if (nums2 == null && nums1 != null) {
-			if (nums1.length > 1) {
-				System.out.println("Second array is null, first array has more than one element.");
-				// return median of second array
-				return (nums1[0] - nums1[nums1.length - 1]) / 2;
-			}
-			System.out.println("Second array is null, first array has one element.");
-			return nums1[0];
+		if(nums2 == null || nums2.length == 0 ) {
+			isSecondArrayEmpty = true;
+			System.out.println("Second array is empty. Finding median of second Array.");
 		}
-		return 0;
-	}
+	
+		if(isFirstArrayEmpty && isSecondArrayEmpty ) {
+			System.out.println("both arrays are empty. ");
+			return 0;
+		}
+			
+		//both are not empty
+		isFirstArrayEven = isArrayEven(firstArraySize);
+		isSecondArrayEven = isArrayEven(secondArraySize);
+		
 
-	/**
-	 * @param firstArrayToDivide
-	 * @param secondArrayToDivide
-	 */
-	public void combineArray(int[] firstArrayToDivide, int[] secondArrayToDivide) {
-
-		// copy first half of first array
-		int middleNumberOfFirstArray = (firstArrayToDivide.length / 2);
-		int[] firstHalf = Arrays.copyOfRange(firstArrayToDivide, 0, middleNumberOfFirstArray);
-
-		// copy second half of second array
-		int middleNumberOfSecondArray = (secondArrayToDivide.length / 2);
-		int[] secondHalf = Arrays.copyOfRange(secondArrayToDivide, middleNumberOfSecondArray, secondArrayToDivide.length);
-
-		//Simply put, the algorithm compares the key value with the middle element of the array; 
-		//if they are unequal, 
-		//the half in which the key cannot be part of is eliminated, 
-		//and the search continues for the remaining half until it succeeds.
+		//if one is empty, find the median of the other 
+		int index = Integer.MAX_VALUE;
+				    
+				    while (nums1.length <= nums2.length) {
+				        int mid = (low + high) / 2;
+				        if (sortedArray[mid] < key) {
+				            low = mid + 1;
+				        } else if (sortedArray[mid] > key) {
+				            high = mid - 1;
+				        } else if (sortedArray[mid] == key) {
+				            index = mid;
+				            break;
+				        }
+				    }
+				    return index;
+				}
 		
 		
-		//do we need to combine these? 
-		int[] both = ArrayUtils.addAll(firstHalf, secondHalf);
+		
+		
+		
+		
+		
+		
 
-	}
+		//one is even, one is odd	
+		if(isFirstArrayEven == true && isSecondArrayEven == false) {
+
+			//the median is the max of the pair to the left of both partitions  
+			int firstPartition = firstArraySize / 2;
+            System.out.println("first partition is at : " + firstPartition);
+            
+            int indexToPick = (firstPartition -1);
+			System.out.println("The index to the left of the first partition is : " + indexToPick);
+            
+            int numberToLeftOfFirstPartition = nums1[indexToPick];
+            
+			if (secondArraySize == 1){ 
+				//also satisfies condition where firstPartition == b[0]
+				if(numberToLeftOfFirstPartition > nums2[0]) {
+					return numberToLeftOfFirstPartition;
+				} else {
+					return nums2[0];
+				}
+    		}
+        }
+        
+        if(isFirstArrayEven == false && isSecondArrayEven == true) {
+            
+            int firstPartition = firstArraySize / 2;
+            int indexToTheLeft = (firstPartition -1);
+            int numberToLeftOfFirstPartition = nums2[indexToTheLeft];
+            
+            
+			if (secondArraySize == 1){ 
+				//also satisfies condition where firstPartition == b[0]
+				if(numberToLeftOfFirstPartition > nums1[0]) {
+					return numberToLeftOfFirstPartition;
+				} else {
+					return nums1[0];
+				}
+    		}
+        }
+            return 0;
+    }
+    		//determine if each is odd or even 
+		public boolean isArrayEven(int size) {
+			if(size % 2 == 0 ) {
+				return  true;
+			} else {
+				return false;
+			}
+		}	
 }
-
